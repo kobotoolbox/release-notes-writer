@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import csv
 import json
+import os
 import re
 import requests
 import subprocess
@@ -10,10 +11,11 @@ from collections import OrderedDict
 # Usage: ./release-notes.py [repo] [previous release tag] [new release tag]
 
 # You need to have the source code `git clone`d here
-SOURCE_DIR = '/home/you/your-kobo-stuff/{repo}'
+SOURCES_BASE_DIR = os.environ['SOURCES_BASE_DIR']
+SOURCE_DIR = SOURCES_BASE_DIR.rstrip('/') + '/{repo}'
 
 # Generate a token at https://github.com/settings/tokens
-GITHUB_API_TOKEN = 'YOUR SECRET TOKEN'
+GITHUB_API_TOKEN = os.environ['GITHUB_API_TOKEN']
 
 repo = sys.argv[1]
 old_tag = sys.argv[2]
