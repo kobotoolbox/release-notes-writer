@@ -98,7 +98,7 @@ print('| PR | Description | Related Issues |')
 print('| - | - | - |')
 for number, details in prs.items():
     row = []
-    row.append(f"[#{number}]({details['html_url']})")
+    row.append(f"[{repo}#{number}]({details['html_url']})")
     description_lines = []
     related_issues_lines = []
     reading_state = None
