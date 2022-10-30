@@ -54,6 +54,11 @@ commits = (
     .decode('utf-8')
     .split('\n')
 )
+
+if not commits[0] and len(commits) == 1:
+    sys.stderr.write('No commits were found. Bye!\n')
+    sys.exit(0)
+
 prs = OrderedDict()
 for commit in commits:
     resp = requests.get(
