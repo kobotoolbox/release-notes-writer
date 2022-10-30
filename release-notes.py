@@ -80,7 +80,11 @@ for commit in commits:
         prs[pr['number']] = interesting_pr
         sys.stderr.write(f"Found PR {pr['number']} for merge {commit}\n")
     else:
-        sys.stderr.write(f"!!! No PR found for merge {commit}\n")
+        commit_description = subprocess.check_output(
+            ['git', 'show', '--oneline', '--no-patch', commit],
+            cwd=SOURCE_DIR.format(repo=repo),
+        ).decode('utf-8').strip()
+        sys.stderr.write(f"!!! No PR found for merge {commit_description}\n")
 
 def condense_spaces(s): return re.sub('  +', ' ', s)
 
