@@ -114,9 +114,8 @@ for number, details in prs.items():
     description_lines = []
     related_issues_lines = []
     reading_state = None
-    if not details['body']:
-        continue
-    for line in details['body'].replace('\r', '').split('\n'):
+    body = details['body'] or ''
+    for line in body.replace('\r', '').split('\n'):
         line = line.strip()
         if line.startswith('## '):
                 reading_state = None
