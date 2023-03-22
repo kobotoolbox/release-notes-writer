@@ -103,8 +103,11 @@ def remove_outer_blanks(l):
             break
     return l[start:end]
 
-print('| PR | Description | Related Issues |')
-print('| - | - | - |')
+# disable "related issues" for now
+# print('| PR | Description | Related Issues |')
+# print('| - | - | - |')
+print('| PR | Description |')
+print('| - | - |')
 for number, details in prs.items():
     row = []
     row.append(f"[{repo}#{number}]({details['html_url']})")
@@ -138,7 +141,8 @@ for number, details in prs.items():
     # https://chat.kobotoolbox.org/#narrow/stream/4-KoBo-Dev/topic/Change.20logs/near/9770
     description_lines.insert(0, details['title'])
     row.append('<br>'.join(description_lines))
-    row.append('<br>'.join(remove_outer_blanks(related_issues_lines)))
+    # disable "related issues" for now
+    # row.append('<br>'.join(remove_outer_blanks(related_issues_lines)))
     print('|', ' | '.join(row), '|')
 
 #import IPython; IPython.embed()
