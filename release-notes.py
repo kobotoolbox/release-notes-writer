@@ -17,6 +17,13 @@ SOURCE_DIR = SOURCES_BASE_DIR.rstrip('/') + '/{repo}'
 # Generate a token at https://github.com/settings/tokens
 GITHUB_API_TOKEN = os.environ['GITHUB_API_TOKEN']
 
+try:
+    sys.argv.remove('--markdown')
+except ValueError:
+    markdown = False
+else:
+    markdown = True
+
 repo = sys.argv[1]
 old_tag = sys.argv[2]
 this_tag = sys.argv[3]
@@ -103,11 +110,19 @@ def remove_outer_blanks(l):
             break
     return l[start:end]
 
+def write_row(row, csv_writer=csv.writer(sys.stdout)):
+    if markdown:
+        print('|', ' | '.join(row), '|')
+    else:
+        csv_writer.writerow(row)
+
 # disable "related issues" for now
 # print('| PR | Description | Related Issues |')
 # print('| - | - | - |')
-print('| PR | Description |')
-print('| - | - |')
+write_row(['PR', 'Description'])
+if markdown:
+    write_row(['-', '-'])
+
 for number, details in prs.items():
     row = []
     row.append(f"[{repo}#{number}]({details['html_url']})")
@@ -142,6 +157,6 @@ for number, details in prs.items():
     row.append('<br>'.join(description_lines))
     # disable "related issues" for now
     # row.append('<br>'.join(remove_outer_blanks(related_issues_lines)))
-    print('|', ' | '.join(row), '|')
+    write_row(row)
 
 #import IPython; IPython.embed()
