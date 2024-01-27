@@ -15,4 +15,4 @@ function get_formpack_rev {
 old_formpack_rev=$(get_formpack_rev "$old_kpi_tag")
 new_formpack_rev=$(get_formpack_rev "$new_kpi_tag")
 
-./release-notes.py formpack "$old_formpack_rev" "$new_formpack_rev"
+./release-notes.py --markdown formpack "$old_formpack_rev" "$new_formpack_rev"
