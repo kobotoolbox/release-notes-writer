@@ -52,6 +52,14 @@ substitutions = (
     ),
 )
 
+latest_commit = (
+    subprocess.check_output(
+        ['git', 'show', '--no-patch', '--pretty=format:%H on %ai'],
+        cwd=SOURCE_DIR.format(repo=repo),
+    )
+    .decode('utf-8')
+    .strip()
+)
 commits = (
     subprocess.check_output(
         ['git', 'log', '--merges', '--pretty=format:%H', f'^{old_tag}', this_tag],
@@ -65,6 +73,8 @@ commits = (
 if not commits[0] and len(commits) == 1:
     sys.stderr.write('No commits were found. Bye!\n')
     sys.exit(0)
+
+print(f'<!-- as of commit {latest_commit} -->')
 
 prs = OrderedDict()
 for commit in commits:
