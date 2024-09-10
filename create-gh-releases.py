@@ -19,7 +19,6 @@ def run(tag: str, release_notes_link: str):
         'kobo-docker',
         'kobo-install',
         'kpi',
-        'kobocat',
     ]
 
     headers = {
