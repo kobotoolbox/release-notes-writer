@@ -7,8 +7,22 @@ notes at https://community.kobotoolbox.org/tags/c/announcements/7/release-notes
 
 # create-gh-releases
 
-Create a GitHub release for the following KoboToolbox repositories: 
+Create a GitHub release for the following KoboToolbox repositories:
+
 - [kobo-docker](https://github.com/kobotoolbox/kobo-docker/releases)
 - [kobo-install](https://github.com/kobotoolbox/kobo-install/releases)
 - [KPI](https://github.com/kobotoolbox/kpi/releases)
-- [KoboCAT](https://github.com/kobotoolbox/kobocat/releases)
+
+### Usage: 
+
+```
+➜  release-notes-writer git:(main) ✗ source ./env
+➜  release-notes-writer git:(main) ✗ python3 create-gh-releases.py <tag> <link.to.release.notes>
+```
+
+**Example:**
+
+```
+python3 create-gh-releases.py 2.099.01 https://community.kobotoolbox.org/t/release-2-099-01/111111/1
+```
+
