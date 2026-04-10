@@ -5,11 +5,17 @@ This is pre-alpha software: in effect, it's just a utility script to decrease
 slightly the amount of manual work needed to publish KoboToolbox release
 notes at https://community.kobotoolbox.org/tags/c/announcements/7/release-notes
 
-# release
+# Setup
 
-One-shot script that runs `create-kobo-release.sh` then `create-gh-releases.py`.
+### 1. Create a virtual environment and install dependencies
 
-### Prerequisites
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2. Configure environment variables
 
 Copy `env.sample` to `env`, fill in your values, then source it:
 
@@ -18,6 +24,16 @@ cp env.sample env
 # edit env with your values
 source ./env
 ```
+
+---
+
+# release
+
+One-shot script that runs `create-kobo-release.sh` then `create-gh-releases.py`.
+
+### Prerequisites
+
+Complete the [Setup](#setup) steps above.
 
 `release.sh` will exit with a clear error if `KOBO_BASE_DIR` or `GITHUB_API_TOKEN` are not set.
 
@@ -41,9 +57,7 @@ Tags and updates `kobo-docker` and `kobo-install` for a new release.
 
 ### Prerequisites
 
-```
-source ./env   # sets KOBO_BASE_DIR
-```
+Complete the [Setup](#setup) steps above.
 
 ### Usage:
 
@@ -63,9 +77,7 @@ Creates GitHub releases for the following KoboToolbox repositories:
 
 ### Prerequisites
 
-```
-source ./env   # sets GITHUB_API_TOKEN
-```
+Complete the [Setup](#setup) steps above.
 
 ### Usage:
 
