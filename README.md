@@ -97,7 +97,9 @@ Generates a Markdown or CSV table of PRs merged between two tags for a given rep
 
 ### Prerequisites
 
-Complete the [Setup](#setup) steps above. Also requires `SOURCES_BASE_DIR` to be set in `env` (path where the target repo is `git clone`d).
+```
+source ./env   # sets KOBO_BASE_DIR
+```
 
 ### Usage:
 
