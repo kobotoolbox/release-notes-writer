@@ -89,7 +89,9 @@ Tags and updates `kobo-docker` and `kobo-install` for a new release.
 
 ### Prerequisites
 
-Complete the [Setup](#setup) steps above.
+```
+source ./env   # sets KOBO_BASE_DIR
+```
 
 ### Usage:
 
