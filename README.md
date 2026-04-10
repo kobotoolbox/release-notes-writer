@@ -1,33 +1,3 @@
-> **Deprecated:** `release-notes.py` is no longer maintained. Its documentation is kept below for reference.
-
-<details>
-<summary>release-notes.py (deprecated)</summary>
-
-Generates a Markdown or CSV table of PRs merged between two tags for a given repo.
-
-### Prerequisites
-
-Complete the [Setup](#setup) steps above. Also requires `SOURCES_BASE_DIR` to be set in `env` (path where the target repo is `git clone`d).
-
-### Usage:
-
-```
-python3 release-notes.py [--markdown] <repo> <previous-tag> <new-tag>
-```
-
-**Examples:**
-
-```
-python3 release-notes.py kpi 2.025.10 2.026.07h
-python3 release-notes.py --markdown kpi 2.025.10 2.026.07h
-```
-
-- Without `--markdown`: outputs CSV to stdout
-- With `--markdown`: outputs a Markdown table to stdout
-- Warnings about missing PRs are printed to stderr
-
-</details>
-
 # Setup
 
 ### 1. Create a virtual environment and install dependencies
@@ -115,3 +85,35 @@ python3 create-gh-releases.py <tag>
 ```
 python3 create-gh-releases.py 2.026.07h
 ```
+
+---
+
+> **Deprecated:** `release-notes.py` is no longer maintained. Its documentation is kept below for reference.
+
+<details>
+<summary>release-notes.py (deprecated)</summary>
+
+Generates a Markdown or CSV table of PRs merged between two tags for a given repo.
+
+### Prerequisites
+
+Complete the [Setup](#setup) steps above. Also requires `SOURCES_BASE_DIR` to be set in `env` (path where the target repo is `git clone`d).
+
+### Usage:
+
+```
+python3 release-notes.py [--markdown] <repo> <previous-tag> <new-tag>
+```
+
+**Examples:**
+
+```
+python3 release-notes.py kpi 2.025.10 2.026.07h
+python3 release-notes.py --markdown kpi 2.025.10 2.026.07h
+```
+
+- Without `--markdown`: outputs CSV to stdout
+- With `--markdown`: outputs a Markdown table to stdout
+- Warnings about missing PRs are printed to stderr
+
+</details>
